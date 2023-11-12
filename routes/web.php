@@ -20,6 +20,17 @@ Route::get('/', function () {
 
 Route::view('/login', 'login');
 Route::view('/register', 'register');
+Route::view('/', 'home');
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
+
+
+// Route::middleware(['role:user'])->group(function () {
+//     Route::view('/', 'home')->middleware('role:user');
+// });
+
+// Route::middleware(['role:user'])->group(function () {
+//     Route::view('/', 'home');
+//     // Add other routes for users...
+// });
