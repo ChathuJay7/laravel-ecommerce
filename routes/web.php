@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+
 //Route::get('/home', [ProductController::class, 'index']);
 
 
@@ -48,8 +50,22 @@ Route::middleware(['web', 'auth', 'user'])->group(function () {
 
 Route::middleware(['web', 'auth', 'admin'])->group(function () {
     Route::get('/admin-dashboard', [ProductController::class, 'index']);
+
+    Route::get('/admin-product', [ProductController::class, 'adminProductView']);
     Route::get('/add-new-product', [ProductController::class, 'addNewProductView']);
     Route::post('/add-new-product', [ProductController::class, 'addNewProduct']);
+
+    Route::get('/admin-user', [UserController::class, 'adminUserView']);
+    Route::get('/add-new-user', [UserController::class, 'addNewUserView']);
+    Route::post('/add-new-user', [UserController::class, 'addNewUser']);
+
+    Route::get('/admin-update-product/{id}', [ProductController::class, 'updateProductView']);
+    Route::put('/admin-update-product/{id}', [ProductController::class, 'updateProduct']);
+    Route::get('/delete-product/{id}', [ProductController::class, 'deleteProduct']);
+
+    Route::get('/admin-update-user/{id}', [UserController::class, 'updateUserView']);
+    Route::put('/admin-update-user/{id}', [UserController::class, 'updateUserAdmin']);
+    Route::get('/delete-user/{id}', [UserController::class, 'deleteUser']);
 });
 
 
