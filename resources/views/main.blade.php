@@ -13,6 +13,77 @@
 
 </head>
 <body>
+    {{View::make('header')}}
     @yield('content')
+    {{View::make('footer')}}
 </body>
+
+
+
+<style>
+
+
+
+    .navigation{
+        background-color: black;
+        color: white;
+        width: 100%;
+
+    }
+
+    .custom-login{
+        height: 400px;
+        padding-top: 100px;
+        background-color: beige;
+    }
+
+    img.slider-img{
+        height: 400px !important
+    }
+    .custom-product{
+        height: 600px
+    }
+    .slider-text{
+        background-color: #35443585 !important;
+    }
+    .trending-image{
+        height: 100px;
+    }
+    .trening-item{
+        float: left;
+        width: 20%;
+    }
+    .trending-wrapper{
+        margin: 30px;
+    }
+    .detail-img{
+        height: 200px;
+    }
+    .search-box{
+        width: 500px !important
+    }
+    .cart-list-devider{
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+    .cart-list-item{
+        align-items: center;
+        margin: auto;
+        justify-content: center;
+    }
+
+    .panel-footer{
+        background-color: black;
+        color: white;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+</style>
+
+
+
 </html>

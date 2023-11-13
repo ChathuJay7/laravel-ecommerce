@@ -2,7 +2,7 @@
 @section("content")
 <div class="container custom-login">
     <div class="row">
-        <div class="col-sm-4 col-sm-offset-4">
+        <div class="col-sm-4 col-sm-offset-4 mx-auto">
 
             @if(isset($error))
             <div>
@@ -30,10 +30,13 @@
                     <button type="submit" class="btn btn-primary">Login</button>
                 </div>   
                 <div>
-                    <p>Dont have an account? <a href="/register">SignIp</a></p>
+                    <p>Dont have an account? <a href="/register">SignUp</a></p>
                 </div>
             </form>
+
         </div>
     </div>
 </div>
+
+
 @endsection

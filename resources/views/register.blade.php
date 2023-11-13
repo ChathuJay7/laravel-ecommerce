@@ -37,21 +37,11 @@
                     <button type="submit" class="btn btn-primary">Register</button>
                 </div>   
                 <div>
-                    <p>Already registered? <a href="/login">Login</a></p>
+                    <p>Already registered? <a href="/login">Sign In</a></p>
                 </div> 
             </form>
         </div>
     </div>
 </div>
-
-<!-- JavaScript to clear error messages on input focus -->
-<script>
-    $(document).ready(function () {
-        // Clear error messages on input focus
-        $('input').focus(function () {
-            $(this).next('.text-danger').html('');
-        });
-    });
-</script>
 
 @endsection
