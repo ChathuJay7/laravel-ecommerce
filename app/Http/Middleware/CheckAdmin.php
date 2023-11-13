@@ -24,3 +24,4 @@ class CheckAdmin
         return redirect('/login'); // Redirect to login if not authenticated or not an admin
     }
 }
+

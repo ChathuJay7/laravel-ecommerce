@@ -47,8 +47,11 @@ Route::middleware(['web', 'auth', 'user'])->group(function () {
 });
 
 Route::middleware(['web', 'auth', 'admin'])->group(function () {
-    Route::view('/admin-dashboard', 'admin-dashboard');
+    Route::get('/admin-dashboard', [ProductController::class, 'index']);
+    Route::get('/add-new-product', [ProductController::class, 'addNewProductView']);
+    Route::post('/add-new-product', [ProductController::class, 'addNewProduct']);
 });
+
 
 
 // Route::middleware(['auth'])->group(function () {
