@@ -16,6 +16,14 @@ class ProductController extends Controller
     //     return view('home', compact('products'));
     // }
 
+
+
+
+    /**
+     * Display the dashboard based on the user's role.
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     function index()
     {
         $user = Auth::user();
@@ -28,15 +36,37 @@ class ProductController extends Controller
         }
     }
 
+
+
+    /**
+     * Display the admin product view.
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     function adminProductView() {
         $products = Product::all();
         return view('/admin-product', compact('products'));
     }
 
+
+
+    /**
+     * Display the add new product view.
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
     function addNewProductView() {
         return view('/add-new-product');
     }
 
+
+
+    /**
+     * Add a new product to the database.
+     *
+     * @param  \Illuminate\Http\Request  $req
+     * @return \Illuminate\Http\RedirectResponse
+     */
     function addNewProduct(Request $req) {
         try {
             // Validate input
@@ -72,6 +102,13 @@ class ProductController extends Controller
     }
 
 
+
+    /**
+     * Display the view to update a specific product.
+     *
+     * @param  int  $id
+     * @return \Illuminate\View\View
+     */
     public function updateProductView($id)
     {
         // Retrieve the product by ID
@@ -81,6 +118,15 @@ class ProductController extends Controller
         return view('admin-update-product', compact('product'));
     }
 
+
+
+    /**
+     * Update the specified product in storage.
+     *
+     * @param  \Illuminate\Http\Request  $req
+     * @param  int  $productId
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function updateProduct(Request $req, $productId)
     {
         try {
@@ -144,6 +190,15 @@ class ProductController extends Controller
     //         return redirect('/admin-product')->with('error', 'Failed to delete product. Please try again.');
     //     }
     // }
+
+
+
+    /**
+     * Remove the specified product from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteProduct($id)
     {
         try {

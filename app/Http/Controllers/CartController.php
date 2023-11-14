@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+
+    /**
+     * Add a product to the user's cart.
+     *
+     * @param  int  $productId
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function addToCart($productId)
     {
         // Get the authenticated user
@@ -24,33 +31,52 @@ class CartController extends Controller
             $cart = Cart::create(['user_id' => $user->id]);
         }
 
-        // Find the product by ID
+        // Find the product by Id
         $product = Product::findOrFail($productId);
 
-        // Add the product to the cart items
+        // Add the productId and cartId to cart items
         $cartItem = CartItem::create([
             'cart_id' => $cart->id,
             'product_id' => $product->id,
-            // Add other details as needed
         ]);
-
-        // Optionally, you can add more logic or return a response
 
         return redirect()->back()->with('success', 'Item added to cart successfully');
     }
 
+
+
+    /**
+     * Display the cart view with cart details and associated cart items.
+     *
+     * @param  int  $id
+     * @return \Illuminate\View\View
+     */
     function cartView($id) {
+
+        // Find the cart by ID
         $cart = Cart::findOrFail($id);
         //$cartItems = $cart->cartItems;
+
+        // Retrieve cart items with associated product details
         $cartItems = $cart->cartItems()->with('product')->get();
+
         return view('cart', compact('cart', 'cartItems'));
     }
 
+
+
+    /**
+     * Remove a cart item from the cart.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function removeCartItem($id)
     {
         // Find the cart item by ID
         $cartItem = CartItem::find($id);
 
+        // Check if the cart item exists
         if (!$cartItem) {
             return redirect()->back()->with('error', 'Cart item not found.');
         }
@@ -58,7 +84,7 @@ class CartController extends Controller
         // Remove the cart item
         $cartItem->delete();
 
-        // Optionally, redirect back or to a specific page
         return redirect()->back()->with('success', 'Cart Item removed from cart successfully.');
     }
+
 }

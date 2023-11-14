@@ -80,6 +80,15 @@ class AuthController extends Controller
     //     }
     // }
 
+
+
+
+    /**
+     * Attempt to log in the user.
+     *
+     * @param  \Illuminate\Http\Request  $req
+     * @return \Illuminate\Http\Response
+     */
     function login(Request $req){
         try {
             // Validate input
@@ -115,7 +124,12 @@ class AuthController extends Controller
     }
     
 
-
+    /**
+     * Handle the user registration process.
+     *
+     * @param  \Illuminate\Http\Request  $req
+     * @return \Illuminate\Http\Response
+     */
     function register(Request $req){
         try {
             // Validate input
@@ -148,8 +162,16 @@ class AuthController extends Controller
     }
 
 
+
+    /**
+     * Handle the user logout process.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     function logout(Request $request)
     {
+        // Logout the user
         auth()->logout();
 
         $request->session()->invalidate();
@@ -160,11 +182,22 @@ class AuthController extends Controller
     }
 
 
+
+    /**
+     * Display the login page.
+     *
+     * @return \Illuminate\View\View
+     */
     function loginPage() {
         return view('login');
     }
 
 
+    /**
+     * Display the register page.
+     *
+     * @return \Illuminate\View\View
+     */
     function registerPage() {
         return view('register');
     }

@@ -10,15 +10,37 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
+
+    /**
+     * Display a listing of the users in the admin panel.
+     *
+     * @return \Illuminate\View\View
+     */
     function adminUserView() {
         $users = User::all();
         return view('/admin-user', compact('users'));
     }
 
+
+
+    /**
+     * Display the form for adding a new user in the admin panel.
+     *
+     * @return \Illuminate\View\View
+     */
     function addNewUserView() {
         return view('/add-new-user');
     }
 
+
+
+    /**
+     * Handle the request to add a new user in the admin panel.
+     *
+     * @param  \Illuminate\Http\Request  $req
+     * @return \Illuminate\Http\RedirectResponse
+     */
     function addNewUser(Request $req) {
         try {
             // Validate input
@@ -50,14 +72,30 @@ class UserController extends Controller
         }
     }
 
+
+
+    /**
+     * Display the form to update user information in the admin panel.
+     *
+     * @param  int  $id
+     * @return \Illuminate\View\View
+     */
     public function updateUserView($id){
         // Retrieve the product by ID
         $user = User::find($id);
 
-        // Pass the product data to the view
         return view('admin-update-user', compact('user'));
     }
 
+
+
+    /**
+     * Update the role of a user in the admin panel.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function updateUserAdmin(Request $request, $id)
     {
         try {
@@ -88,6 +126,13 @@ class UserController extends Controller
     }
 
 
+
+    /**
+     * Delete a user in the admin panel.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteUser($id)
     {
         try {
@@ -109,7 +154,12 @@ class UserController extends Controller
     }
 
 
-
+    /**
+     * Display the form to update user details.
+     *
+     * @param  int  $id
+     * @return \Illuminate\View\View
+     */
     public function updateUserDetailsView($id){
         // Retrieve the product by ID
         $user = User::find($id);
@@ -119,6 +169,14 @@ class UserController extends Controller
     }
 
 
+
+    /**
+     * Update the user details.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function updateUserDetails(Request $request, $id)
     {
 
@@ -151,16 +209,29 @@ class UserController extends Controller
     }
 
 
+
+    /**
+     * Display the form to update the user's password.
+     *
+     * @param  int  $id
+     * @return \Illuminate\View\View
+     */
     public function updateUserPasswordView($id){
         // Retrieve the product by ID
         $user = User::find($id);
 
-        // Pass the product data to the view
         return view('update-user-password', compact('user'));
     }
 
  
 
+    /**
+     * Update the user's password.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function updateUserPassword(Request $request, $id)
     {
 
