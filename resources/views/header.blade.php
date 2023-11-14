@@ -9,7 +9,9 @@
 
                 @auth
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{{ Auth::user()->role === 'admin' ? '/admin-dashboard' : '/home' }}">
+                        {{ Auth::user()->role === 'admin' ? 'Dashboard' : 'Home' }}
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/update-user-details/{{ auth()->user()->id }}">{{ auth()->user()->name }}</a>

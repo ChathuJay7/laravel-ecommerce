@@ -8,8 +8,11 @@
             </div>
 
             <div class="my-3">
-                <a href="/home" class="text-decoration-none">  &lt;-- Home </a>
+                <a href="{{ Auth::check() && Auth::user()->role === 'admin' ? '/admin-dashboard' : '/home' }}" class="text-decoration-none">
+                    &lt;-- {{ Auth::check() && Auth::user()->role === 'admin' ? 'Dashboard' : 'Home' }}
+                </a>
             </div>
+            
 
             @if(isset($error))
                 <div>
