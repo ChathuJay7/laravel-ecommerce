@@ -4,7 +4,7 @@
             <div class="col-md-3">
                 <h5>Contact Us</h5>
                 <p>Email: ecommerce@example.com</p>
-                <p>Phone: +1 123-456-7890</p>
+                <p>Phone: +94 11-456-7890</p>
             </div>
             <div class="col-md-6 justify-content-center d-flex align-items-center">
                 &copy; 2023 E-Commerce. All rights reserved.

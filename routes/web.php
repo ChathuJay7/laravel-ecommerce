@@ -39,6 +39,9 @@ Route::middleware(['web', 'auth', 'user'])->group(function () {
     Route::get('/home', [ProductController::class, 'index']);
 
     Route::get('/add-to-cart/{productId}', [CartController::class, 'addToCart']);
+    Route::get('/cart/{id}', [CartController::class, 'cartView']);
+
+    Route::get('/remove-cart-item/{id}', [CartController::class, 'removeCartItem']);
 });
 
 

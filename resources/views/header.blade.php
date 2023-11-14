@@ -23,18 +23,23 @@
                     </form>
                 </li>
                 <li class="nav-item" style="margin-left: 10px;">
-                    <a class="nav-link" href="/cart">
-                        Cart
-                        @auth
-                            @php
-                                $userCart = auth()->user()->cart;
-                                $cartItemCount = $userCart ? $userCart->cartItems : null;
-                                $cartItemCount = $cartItemCount ? $cartItemCount->count() : 0;
-                            @endphp
-                            <span class="badge bg-danger">{{ $cartItemCount }}</span>
-                        @endauth
-                    </a>
+                    @auth
+                        @php
+                            $userCart = auth()->user()->cart;
+                            $cartItemCount = $userCart ? $userCart->cartItems : null;
+                            $cartItemCount = $cartItemCount ? $cartItemCount->count() : 0;
+                        @endphp
+                        @if($userCart)
+                            <a class="nav-link" href="/cart/{{ $userCart->id }}">
+                                Cart
+                                @if($cartItemCount > 0)
+                                    <span class="badge bg-danger">{{ $cartItemCount }}</span>
+                                @endif
+                            </a>
+                        @endif
+                    @endauth
                 </li>
+                
                 @else
                 <li class="nav-item">
                     <a class="nav-link" href="/login">Login</a>

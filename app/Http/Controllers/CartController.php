@@ -38,4 +38,27 @@ class CartController extends Controller
 
         return redirect()->back()->with('success', 'Item added to cart successfully');
     }
+
+    function cartView($id) {
+        $cart = Cart::findOrFail($id);
+        //$cartItems = $cart->cartItems;
+        $cartItems = $cart->cartItems()->with('product')->get();
+        return view('cart', compact('cart', 'cartItems'));
+    }
+
+    public function removeCartItem($id)
+    {
+        // Find the cart item by ID
+        $cartItem = CartItem::find($id);
+
+        if (!$cartItem) {
+            return redirect()->back()->with('error', 'Cart item not found.');
+        }
+
+        // Remove the cart item
+        $cartItem->delete();
+
+        // Optionally, redirect back or to a specific page
+        return redirect()->back()->with('success', 'Cart Item removed from cart successfully.');
+    }
 }
