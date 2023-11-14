@@ -267,4 +267,35 @@ class UserController extends Controller
         }
     }
 
+
+
+    /**
+     * Perform a search for users based on the provided search term.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
+     */
+    public function search(Request $request)
+    {
+        try {
+            // Get the search query from the request
+            $query = $request->input('searchTerm');
+
+            // Perform a basic search on the user name
+            $users = User::where('name', 'like', '%' . $query . '%')->get();
+            
+            // Check the user's role
+            return view('admin-user', compact('users'));
+
+        } catch (\Exception $e) {
+            // Handle exceptions
+            $response = [
+                'message' => "Failed to perform the search. Please try again.",
+                'error' => $e->getMessage(),
+            ];
+
+            return redirect()->back()->withErrors($response);
+        }
+    }
+
 }

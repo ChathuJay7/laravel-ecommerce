@@ -38,6 +38,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware(['web', 'auth', 'user'])->group(function () {
     Route::get('/home', [ProductController::class, 'index']);
 
+    Route::get('/home', [ProductController::class, 'search']);
+
     Route::get('/add-to-cart/{productId}', [CartController::class, 'addToCart']);
     Route::get('/cart/{id}', [CartController::class, 'cartView']);
     Route::get('/remove-cart-item/{id}', [CartController::class, 'removeCartItem']);
@@ -54,10 +56,12 @@ Route::middleware(['web', 'auth', 'admin'])->group(function () {
     Route::get('/admin-dashboard', [ProductController::class, 'index']);
 
     Route::get('/admin-product', [ProductController::class, 'adminProductView']);
+    Route::get('/admin-product', [ProductController::class, 'search']);
     Route::get('/add-new-product', [ProductController::class, 'addNewProductView']);
     Route::post('/add-new-product', [ProductController::class, 'addNewProduct']);
 
     Route::get('/admin-user', [UserController::class, 'adminUserView']);
+    Route::get('/admin-user', [UserController::class, 'search']);
     Route::get('/add-new-user', [UserController::class, 'addNewUserView']);
     Route::post('/add-new-user', [UserController::class, 'addNewUser']);
 

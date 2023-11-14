@@ -39,6 +39,43 @@ class ProductController extends Controller
 
 
     /**
+     * Perform a search for products based on the provided search term.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
+     */
+    public function search(Request $request)
+    {
+        try {
+            // Get the search query from the request
+            $query = $request->input('searchTerm');
+
+            // Perform a basic search on the product name
+            $products = Product::where('name', 'like', '%' . $query . '%')->get();
+
+            //return view('home', compact('products'));
+            
+            // Check the user's role
+            if (Auth::check() && Auth::user()->role === 'admin') {
+                return view('admin-product', compact('products'));
+            } else {
+                return view('home', compact('products'));
+            }
+
+        } catch (\Exception $e) {
+            // Handle exceptions
+            $response = [
+                'message' => "Failed to perform the search. Please try again.",
+                'error' => $e->getMessage(),
+            ];
+
+            return redirect()->back()->withErrors($response);
+        }
+    }
+
+
+
+    /**
      * Display the admin product view.
      *
      * @return \Illuminate\Contracts\View\View

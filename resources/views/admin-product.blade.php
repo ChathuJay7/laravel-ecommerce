@@ -1,13 +1,23 @@
 @extends('main')
 @section("content")
-<div class="container text-center mb-5">
+<div class="container text-center my-5">
     <h1>Products</h1>
 </div>
 
-<div class="container mb-3 d-flex justify-content-between">
-    <a href="/admin-dashboard" class="btn btn-secondary"> <- Dashboard </a>
-    <a href="/add-new-product" class="btn btn-primary">+ Add Product</a>
+<div class="container mb-3 ">
+    <div class="d-flex justify-content-between align-items-center gap-5">
+        <a href="/admin-dashboard" class="btn btn-secondary"> <- Dashboard </a>
+        
+        <form action="/admin-product" method="GET" class="d-flex flex-grow-1 ms-2"> <!-- flex-grow-1 to make the form take remaining space -->
+            <input type="text" name="searchTerm" class="form-control" placeholder="Search products...">
+            <button type="submit" class="btn btn-primary ms-2 flex-grow-1">Search</button> <!-- flex-grow-1 to make the button take remaining space -->
+        </form>
+        
+        <a href="/add-new-product" class="btn btn-primary">+ Add Product</a>
+    </div>
 </div>
+
+
 
 <div class="container mb-3">
     
@@ -18,6 +28,8 @@
         {{ session('success') }}
     </div>
 @endif
+
+
 
 <table class="container table table-hover">
     <thead>

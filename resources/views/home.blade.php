@@ -6,6 +6,15 @@
         <h1 class="mx-auto text-center">Products</h1>
     </div>
 
+    <div class="row mb-4">
+        <div class="col-md-6 offset-md-3">
+            <form action="/home" method="GET" class="d-flex">
+                <input type="text" name="searchTerm" class="form-control" placeholder="Search products...">
+                <button type="submit" class="btn btn-primary ms-2">Search</button>
+            </form>
+        </div>
+    </div>
+
     <div class="row row-cols-1 row-cols-md-4 g-4">
         @foreach($products as $item)
             <div class="col">
