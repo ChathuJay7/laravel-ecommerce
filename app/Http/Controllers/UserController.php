@@ -109,4 +109,91 @@ class UserController extends Controller
     }
 
 
+
+    public function updateUserDetailsView($id){
+        // Retrieve the product by ID
+        $user = User::find($id);
+
+        // Pass the product data to the view
+        return view('update-user-details', compact('user'));
+    }
+
+
+    public function updateUserDetails(Request $request, $id)
+    {
+
+        try {
+            // Validate input
+            $request->validate([
+                'name' => 'required|string',
+            ]);
+
+            // Find the user by ID
+            $user = User::findOrFail($id);
+
+            // Update the name
+            $user->name = $request->name;
+            $user->save();
+
+            // Update successful
+            return redirect('/update-user-details/' . $user->id)->with('success', 'User details updated successfully.');
+
+
+        } catch (Exception $e) {
+            // Update failed
+            $response = [
+                'message' => "Failed to update details. Please try again.",
+                'error' => $e->getMessage(),
+            ];
+
+            return redirect()->back()->withErrors($response);
+        }
+    }
+
+
+    public function updateUserPasswordView($id){
+        // Retrieve the product by ID
+        $user = User::find($id);
+
+        // Pass the product data to the view
+        return view('update-user-password', compact('user'));
+    }
+
+ 
+
+    public function updateUserPassword(Request $request, $id)
+    {
+
+        try {
+            // Validate input
+            $request->validate([
+                'oldPassword' => 'required|string',
+                'password' => 'required|confirmed|min:6',
+            ]);
+
+            $user = User::find($id);
+
+            // Check if the old password matches
+            if (!Hash::check($request->oldPassword, $user->password)) {
+                return back()->withInput()->withErrors(['oldPassword' => 'The old password is incorrect.']);
+            }
+
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            // Update successful
+            return redirect('/update-user-password/' . $user->id)->with('success', 'Password updated successfully.');
+
+
+        } catch (Exception $e) {
+            // Update failed
+            $response = [
+                'message' => "Failed to update password. Please try again.",
+                'error' => $e->getMessage(),
+            ];
+
+            return redirect()->back()->withErrors($response);
+        }
+    }
+
 }

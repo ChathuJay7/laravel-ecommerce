@@ -40,8 +40,12 @@ Route::middleware(['web', 'auth', 'user'])->group(function () {
 
     Route::get('/add-to-cart/{productId}', [CartController::class, 'addToCart']);
     Route::get('/cart/{id}', [CartController::class, 'cartView']);
-
     Route::get('/remove-cart-item/{id}', [CartController::class, 'removeCartItem']);
+
+    Route::get('/update-user-details/{id}', [UserController::class, 'updateUserDetailsView']);
+    Route::put('/update-user-details/{id}', [UserController::class, 'updateUserDetails']);
+    Route::get('/update-user-password/{id}', [UserController::class, 'updateUserPasswordView']);
+    Route::put('/update-user-password/{id}', [UserController::class, 'updateUserPassword']);
 });
 
 

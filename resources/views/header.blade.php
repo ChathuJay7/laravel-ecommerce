@@ -12,7 +12,7 @@
                     <a class="nav-link active" aria-current="page" href="/home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ auth()->user()->name }}</a>
+                    <a class="nav-link" href="/update-user-details/{{ auth()->user()->id }}">{{ auth()->user()->name }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
