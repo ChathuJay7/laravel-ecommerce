@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,20 +34,14 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
-//Route::get('/home', [ProductController::class, 'index']);
-
-
-// Route::middleware(['web', 'auth'])->group(function () {
-//     // Route::get('/home', function () {
-//     //     return view('/home');
-//     // });
-//     Route::get('/home', [ProductController::class, 'index']);
-//     Route::view('/admin-dashboard', 'admin-dashboard');
-// });
 
 Route::middleware(['web', 'auth', 'user'])->group(function () {
     Route::get('/home', [ProductController::class, 'index']);
+
+    Route::get('/add-to-cart/{productId}', [CartController::class, 'addToCart']);
 });
+
+
 
 Route::middleware(['web', 'auth', 'admin'])->group(function () {
     Route::get('/admin-dashboard', [ProductController::class, 'index']);

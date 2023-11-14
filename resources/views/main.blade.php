@@ -6,91 +6,51 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ecommerce</title>
 
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
+    <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha384-df4wZR2lU02K5UqLOhAi9qTn4FlMSXCz6yoWcZFUZCehq2RQ9Mi+uPFHpzZTMu4H" crossorigin="anonymous">
 
-    {{-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> --}}
+    <style>
+         body {
+            height: 100%;
+            margin: 0;
+        }
 
-    
-    
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
+        #app {
+            flex-grow: 1;
+            margin-bottom: 100px;
+        }
+
+        #header {
+            position: sticky;
+            top: 0;
+            z-index: 1000; /* Adjust the z-index as needed */
+        }
+    </style>
 </head>
 <body>
-    {{View::make('header')}}
-    @yield('content')
-    {{View::make('footer')}}
+    <div class="wrapper">
+        <div id="header">
+            {{ View::make('header') }}
+        </div>
+        
+        <div id="app">
+            @yield('content')
+        </div>
+        
+        {{ View::make('footer') }}
+    </div>
+
+    <!-- Bootstrap JavaScript and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
-
-
-
-<style>
-
-
-
-    .navigation{
-        background-color: black;
-        color: white;
-        width: 100%;
-
-    }
-
-    .custom-login{
-        height: 400px;
-        padding-top: 100px;
-        background-color: beige;
-    }
-
-    img.slider-img{
-        height: 400px !important
-    }
-    .custom-product{
-        height: 600px
-    }
-    .slider-text{
-        background-color: #35443585 !important;
-    }
-    .trending-image{
-        height: 100px;
-    }
-    .trening-item{
-        float: left;
-        width: 20%;
-    }
-    .trending-wrapper{
-        margin: 30px;
-    }
-    .detail-img{
-        height: 200px;
-    }
-    .search-box{
-        width: 500px !important
-    }
-    .cart-list-devider{
-        border-bottom: 1px solid #ccc;
-        margin-bottom: 20px;
-        padding-bottom: 20px;
-    }
-    .cart-list-item{
-        align-items: center;
-        margin: auto;
-        justify-content: center;
-    }
-
-    .panel-footer{
-        background-color: black;
-        color: white;
-        text-align: center;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
-
-</style>
-
-
-
 </html>

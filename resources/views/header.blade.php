@@ -1,57 +1,53 @@
-<nav class="navbar navbar-expand-lg navbar-dart bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar scroll</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarScroll">
-        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
+        <a class="navbar-brand" href="#">ECommerce</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
-          
+                @auth
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{ auth()->user()->name }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+                <li class="nav-item" style="margin-left: 10px;">
+                    <a class="nav-link" href="/cart">
+                        Cart
+                        @auth
+                            @php
+                                $userCart = auth()->user()->cart;
+                                $cartItemCount = $userCart ? $userCart->cartItems : null;
+                                $cartItemCount = $cartItemCount ? $cartItemCount->count() : 0;
+                            @endphp
+                            <span class="badge bg-danger">{{ $cartItemCount }}</span>
+                        @endauth
+                    </a>
+                </li>
+                @else
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Register</a>
+                </li>
 
-          @if(Session::has('user'))
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{Session::get('user')['name']}}
-            <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="/logout">Logout</a></li>
+                
+                @endauth
+
             </ul>
-          </li>
-          @endif
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Link
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Link</a>
-          </li>
-        </ul>
-
-        @auth
-          <form action="/logout" method="post">
-            @csrf
-            <button type="submit">Logout</button>
-          </form>
-        @endauth
-        
-
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
+        </div>
     </div>
-  </nav>
+</nav>
+
