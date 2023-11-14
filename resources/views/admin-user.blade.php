@@ -4,12 +4,9 @@
     <h1>Users</h1>
 </div>
 
-<div>
-    <a href="/add-new-user">+ Add User</a>
-</div>
-
-<div>
-    <a href="/admin-dashboard"> <- Dashboard </a>
+<div class="container mb-3 d-flex justify-content-between">
+    <a href="/admin-dashboard" class="btn btn-secondary"> <- Dashboard </a>
+    <a href="/add-new-user" class="btn btn-primary">+ Add User</a>
 </div>
 
 @if(session('success'))
@@ -36,9 +33,8 @@
         <td>{{ $user['email'] }}</td>
         <td>{{ $user['role'] }}</td>
         <td>
-            <a href="/admin-update-user/{{ $user['id'] }}">Update<i class="fas fa-edit"></i></a>
-            {{-- <a href="/delete-product/{{ $product['id'] }}">Delete<i class="fas fa-trash-alt"></i></a> --}}
-            <a href="/delete-user/{{ $user['id'] }}" onclick="return confirm('Are you sure you want to delete this user?')">Delete <i class="fas fa-trash-alt"></i></a>
+            <a href="/admin-update-user/{{ $user['id'] }}" class="btn btn-warning">Update <i class="fas fa-edit"></i></a>
+            <a href="/delete-user/{{ $user['id'] }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?')">Delete <i class="fas fa-trash-alt"></i></a>
         </td>
       </tr>
       @endforeach

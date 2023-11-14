@@ -4,12 +4,13 @@
     <h1>Products</h1>
 </div>
 
-<div>
-    <a href="/add-new-product">+ Add Product</a>
+<div class="container mb-3 d-flex justify-content-between">
+    <a href="/admin-dashboard" class="btn btn-secondary"> <- Dashboard </a>
+    <a href="/add-new-product" class="btn btn-primary">+ Add Product</a>
 </div>
 
-<div>
-    <a href="/admin-dashboard"> <- Dashboard </a>
+<div class="container mb-3">
+    
 </div>
 
 @if(session('success'))
@@ -38,14 +39,11 @@
         <td>{{ $product['category'] }}</td>
         <td><img src="{{ $product['gallery'] }}" alt="Product Image" style="max-width: 100px; max-height: 100px;"></td>
         <td>
-            <a href="/admin-update-product/{{ $product['id'] }}">Update<i class="fas fa-edit"></i></a>
-            {{-- <a href="/delete-product/{{ $product['id'] }}">Delete<i class="fas fa-trash-alt"></i></a> --}}
-            <a href="/delete-product/{{ $product['id'] }}" onclick="return confirm('Are you sure you want to delete this product?')">Delete <i class="fas fa-trash-alt"></i></a>
-        </td>
+            <a href="/admin-update-product/{{ $product['id'] }}" class="btn btn-warning">Update <i class="fas fa-edit"></i></a>
+            <a href="/delete-product/{{ $product['id'] }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?')">Delete <i class="fas fa-trash-alt"></i></a>
         </td>
       </tr>
       @endforeach
     </tbody>
   </table>
-
 @endsection
