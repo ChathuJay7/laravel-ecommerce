@@ -15,33 +15,47 @@ class ProductSeeder extends Seeder
     {
         DB::table('products')->insert([
             [
-                'name'=>'Oppo mobile',
-                "price"=>"300",
-                "description"=>"A smartphone with 8gb ram and much more feature",
-                "category"=>"mobile",
-                "gallery"=>"https://assetscdn1.paytm.com/images/catalog/product/M/MO/MOBOPPO-A52-6-GFUTU6297453D3D253C/1592019058170_0..png"
+                'name'=>'Samsung Galaxy S23 Ultra',
+                "price"=>"295000",
+                "description"=>"The Galaxy S23 Ultra is unapologetically big, with a 6.8-inch screen. If the Samsung S22 Ultra was the ultimate evolution of a slab-style smartphone,",
+                "category"=>"Mobile",
+                "gallery"=>"https://www.ideabeam.com/images/product/big/samsung-galaxy-s23-ultra.jpg"
             ],
             [
-                'name'=>'Panasonic Tv',
-                "price"=>"400",
-                "description"=>"A smart tv with much more feature",
-                "category"=>"tv",
-                "gallery"=>"https://i.gadgets360cdn.com/products/televisions/large/1548154685_832_panasonic_32-inch-lcd-full-hd-tv-th-l32u20.jpg"
+                'name'=>'iPhone 14 Pro Max',
+                "price"=>"384990",
+                "description"=>"Device dimensions are 77.6 × 160.7 × 7.9 millimeters (3.06 × 6.33 × 0.31 inches). The device weighs 240 g. iPhone 14 Pro Max has a large-sized LTPO Super Retina XDR OLED display.",
+                "category"=>"Mobile",
+                "gallery"=>"https://m.media-amazon.com/images/I/71T5NVOgbpL._AC_UF1000,1000_QL80_.jpg"
             ],
             [
-                'name'=>'Soni Tv',
-                "price"=>"500",
-                "description"=>"A tv with much more feature",
-                "category"=>"tv",
-                "gallery"=>"https://4.imimg.com/data4/PM/KH/MY-34794816/lcd-500x500.png"
+                'name'=>'Panasonic 32 Inch LED TV',
+                "price"=>"75700",
+                "description"=>"Display Resolution, 1366 x 768 ; Viewing Angle, AccuView Display Strong Panel With Wide Viewing Angle ; Brightness, Vivid Digital Pro ; Noise Reduction, Yes.",
+                "category"=>"Tv",
+                "gallery"=>"https://www.jungle.lk/wp-content/uploads/2021/07/Panasonic-32-Inch-HD-LED-TV-TH-32J401N.jpg"
             ],
             [
-                'name'=>'LG fridge',
-                "price"=>"200",
-                "description"=>"A fridge with much more feature",
-                "category"=>"fridge",
-                "gallery"=>"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTFx-2-wTOcfr5at01ojZWduXEm5cZ-sRYPJA&usqp=CAU"
-             ]
+                'name'=>'LG 308L Refrigerator',
+                "price"=>"151990",
+                "description"=>"LG Door Cooling+™ makes inside temperature more even and cools the refrigerator 35% faster than the conventional cooling system. ",
+                "category"=>"Refrigerator",
+                "gallery"=>"https://www.lg.com/lk/images/refrigerators/md07528515/gallery/gl-m332rpzi-Refrigerators-Front-View-MZ-01.jpg"
+            ],
+            [
+                'name'=>'ASEL 50L Electrical Oven',
+                "price"=>"45990",
+                "description"=>"50L Capacity. 1500W power, Adjustable temperature control. Capacity : 4kg. 90 min timer with automatic shut off",
+                "category"=>"Oven",
+                "gallery"=>"https://d1nrmmyttbe8ey.cloudfront.net/media/upload/product/Electric%20oven/ASOVAF5023/1.jpg?1622435094147"
+            ],
+            [
+                'name'=>'Singer Air Fryer',
+                "price"=>"28674",
+                "description"=>" Kg / 3.5L Capacity 1500W Warranty: 1 Year Rapid Air Convection Technology, Little Oil Required Or In Some Cases No Oil (Oil-Less Fryer) 60 Minute Manual Timer, Auto Shut-Off.",
+                "category"=>"Oven",
+                "gallery"=>"https://asianlanka.lk/wp-content/uploads/2022/12/SIN_KA-TXG-DS11A-01_zoom.jpg"
+            ]
         ]);
     }
 }

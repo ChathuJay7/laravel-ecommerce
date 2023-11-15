@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -291,6 +292,29 @@ class UserController extends Controller
             // Handle exceptions
             $response = [
                 'message' => "Failed to perform the search. Please try again.",
+                'error' => $e->getMessage(),
+            ];
+
+            return redirect()->back()->withErrors($response);
+        }
+    }
+
+
+
+    public function userDetails($id)
+    {
+        try {
+            // Get the user by ID
+            $user = User::findOrFail($id);
+
+            // Get the user's orders
+            $orders = Order::where('user_id', $user->id)->get();
+
+            return view('admin-single-user', compact('user', 'orders'));
+        } catch (\Exception $e) {
+            // Handle exceptions
+            $response = [
+                'message' => "Failed to retrieve user details. Please try again.",
                 'error' => $e->getMessage(),
             ];
 

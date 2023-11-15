@@ -37,7 +37,7 @@
       @foreach($users as $user)
       <tr>
         <td>
-            <a href="/admin-single-user.blade.php/{{ $user['id'] }}" class="btn btn-warning">{{ $user['id'] }} <i class="fas fa-edit"></i></a>
+            <a href="/admin-single-user/{{ $user['id'] }}" class="btn btn-warning">{{ $user['id'] }} <i class="fas fa-edit"></i></a>
         </td>
         <td>{{ $user['name'] }}</td>
         <td>{{ $user['email'] }}</td>

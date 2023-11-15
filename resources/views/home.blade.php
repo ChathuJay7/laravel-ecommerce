@@ -17,18 +17,23 @@
 
     <div class="row row-cols-1 row-cols-md-4 g-4">
         @foreach($products as $item)
-            <div class="col">
-                <div class="card h-100">
-                    <img src="{{$item['gallery']}}" class="card-img-top mx-auto p-2" alt="..." style="width: 100%; object-fit: cover;">
-                    <div class="card-body d-flex flex-column">
+        <div class="col">
+            <div class="card h-100">
+                <a href="/product/{{$item['id']}}" style="text-decoration: none; color: inherit;">
+                    <div class="p-4" style="height: 300px; overflow: hidden;">
+                        <img src="{{$item['gallery']}}" class="card-img-top mx-auto p-2" alt="..." style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="card-body d-flex flex-column text-center">
                         <h5 class="card-title">{{$item['name']}}</h5>
-                        <p class="card-text">LKR. {{$item['price']}}</p>
-                        <p class="card-text">{{$item['description']}}</p>
+                        <p class="card-tex mb-3t">LKR. {{$item['price']}}</p>
+                        
                         <a href="/add-to-cart/{{$item['id']}}" class="btn btn-primary mt-auto">Add To Cart</a>
                     </div>
-                </div>
+                </a>
             </div>
-        @endforeach
+        </div>
+    @endforeach
+
     </div>
 </div>
 

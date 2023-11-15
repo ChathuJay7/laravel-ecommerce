@@ -257,4 +257,29 @@ class ProductController extends Controller
     }
 
 
+
+
+    // ProductController.php
+
+    public function singleProductView($id)
+    {
+        try {
+            // Retrieve the product by ID
+            $product = Product::findOrFail($id);
+
+            // Pass the product data to the view
+            return view('single-product', compact('product'));
+        } catch (\Exception $e) {
+            // Handle exceptions
+            $response = [
+                'message' => "Failed to retrieve product details. Please try again.",
+                'error' => $e->getMessage(),
+            ];
+
+            return redirect()->back()->withErrors($response);
+        }
+    }
+
+
+
 }

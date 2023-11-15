@@ -8,9 +8,9 @@
     <div class="d-flex justify-content-between align-items-center gap-5">
         <a href="/admin-dashboard" class="btn btn-secondary"> <- Dashboard </a>
         
-        <form action="/admin-product" method="GET" class="d-flex flex-grow-1 ms-2"> <!-- flex-grow-1 to make the form take remaining space -->
+        <form action="/admin-product" method="GET" class="d-flex flex-grow-1 ms-2">
             <input type="text" name="searchTerm" class="form-control" placeholder="Search products...">
-            <button type="submit" class="btn btn-primary ms-2 flex-grow-1">Search</button> <!-- flex-grow-1 to make the button take remaining space -->
+            <button type="submit" class="btn btn-primary ms-2 flex-grow-1">Search</button> 
         </form>
         
         <a href="/add-new-product" class="btn btn-primary">+ Add Product</a>
@@ -45,7 +45,9 @@
     <tbody>
       @foreach($products as $product)
       <tr>
-        <td>{{ $product['id'] }}</td>
+        <td>
+            <a href="/product/{{ $product['id'] }}" class="btn btn-warning">{{ $product['id'] }} <i class="fas fa-edit"></i></a>
+        </td>
         <td>{{ $product['name'] }}</td>
         <td>{{ $product['price'] }}</td>
         <td>{{ $product['category'] }}</td>

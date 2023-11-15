@@ -41,6 +41,8 @@ Route::middleware(['web', 'auth', 'user'])->group(function () {
 
     Route::get('/home', [ProductController::class, 'search']);
 
+    Route::get('/product/{id}', [ProductController::class, 'singleProductView']);
+
     Route::get('/add-to-cart/{productId}', [CartController::class, 'addToCart']);
     Route::get('/cart/{id}', [CartController::class, 'cartView']);
     Route::get('/remove-cart-item/{id}', [CartController::class, 'removeCartItem']);
@@ -53,6 +55,8 @@ Route::middleware(['web', 'auth', 'user'])->group(function () {
     Route::put('/update-user-details/{id}', [UserController::class, 'updateUserDetails']);
     Route::get('/update-user-password/{id}', [UserController::class, 'updateUserPasswordView']);
     Route::put('/update-user-password/{id}', [UserController::class, 'updateUserPassword']);
+
+    
 });
 
 
@@ -77,6 +81,8 @@ Route::middleware(['web', 'auth', 'admin'])->group(function () {
     Route::get('/admin-update-user/{id}', [UserController::class, 'updateUserView']);
     Route::put('/admin-update-user/{id}', [UserController::class, 'updateUserAdmin']);
     Route::get('/delete-user/{id}', [UserController::class, 'deleteUser']);
+
+    Route::get('/admin-single-user/{id}', [UserController::class, 'userDetails']);
 });
 
 
