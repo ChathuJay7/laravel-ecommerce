@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,10 @@ Route::middleware(['web', 'auth', 'user'])->group(function () {
     Route::get('/add-to-cart/{productId}', [CartController::class, 'addToCart']);
     Route::get('/cart/{id}', [CartController::class, 'cartView']);
     Route::get('/remove-cart-item/{id}', [CartController::class, 'removeCartItem']);
+
+    Route::get('/place-order/{id}', [OrderController::class, 'placeOrderView']);
+    Route::get('/place-order', [OrderController::class, 'placeOrder']);
+    Route::get('/orders', [OrderController::class, 'orderView']);
 
     Route::get('/update-user-details/{id}', [UserController::class, 'updateUserDetailsView']);
     Route::put('/update-user-details/{id}', [UserController::class, 'updateUserDetails']);

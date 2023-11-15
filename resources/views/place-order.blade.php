@@ -1,20 +1,14 @@
+<!-- resources/views/placeOrder.blade.php -->
+
 @extends('main')
 @section("content")
-<div class="container text-center mb-5">
-    <h1>Cart Items</h1>
-    @if ($cartItems->isEmpty())
-        <p></p>
-    @else
-        @php
-            $cartTotal = $cartItems->sum('product.price');
-        @endphp
-        <h4 class="mt-5">Cart Total: LKR. {{ $cartTotal }}</h4>
-    @endif
-</div>
+    <div class="container text-center mb-5">
+        <h1>Place Order</h1>
+    </div>
 
-<div class="container mb-3 d-flex justify-content-between">
-    <a href="/home" class="btn btn-secondary"> <- Home </a>
-</div>
+    <div class="container mb-3 d-flex justify-content-between">
+        <a href="/cart/{{$cart->id}}" class="btn btn-secondary"> <- Cart </a>
+    </div>
 
     @if(session('success'))
         <div class="container alert alert-success text-center">
@@ -32,7 +26,6 @@
                     <th scope="col">Category</th>
                     <th scope="col">Description</th>
                     <th scope="col">Image</th>
-                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,24 +37,22 @@
                         <td>{{ $cartItem->product->category }}</td>
                         <td>{{ $cartItem->product->description }}</td>
                         <td><img src="{{ $cartItem->product['gallery'] }}" alt="Product Image" style="max-width: 100px; max-height: 100px;"></td>
-                        <td>
-                            <a href="/remove-cart-item/{{ $cartItem->id }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?')">Remove <i class="fas fa-trash-alt"></i></a>
-                        </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
 
         <div class="mb-3 text-center">
-            <a href="/place-order/{{$cart->id}}" class="btn btn-success">Orders Now</a>
+            <a href="/place-order" class="btn btn-success">Confirm Order</a>
         </div>
 
     @else
 
     <div class="text-center">
-        <h2>No cart Items. Cart is empty!</h2>
+        <a href="/orders" class="btn btn-success">My Orders</a>
     </div>
 
     @endif
 
 @endsection
+

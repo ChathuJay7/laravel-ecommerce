@@ -16,18 +16,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/update-user-details/{{ auth()->user()->id }}">{{ auth()->user()->name }}</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        Logout
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </li>
+                
                 <li class="nav-item" style="margin-left: 10px;">
                     @auth
                         @php
                             $userCart = auth()->user()->cart;
+
+                                //$userCartCount = auth()->user()->cart->count();
+
                             $cartItemCount = $userCart ? $userCart->cartItems : null;
                             $cartItemCount = $cartItemCount ? $cartItemCount->count() : 0;
                         @endphp
@@ -40,6 +36,27 @@
                             </a>
                         @endif
                     @endauth
+                </li>
+                <li class="nav-item">
+                    @auth
+                        @php
+                            $userOrderCount = auth()->user()->orders->count();
+                        @endphp
+                        @if($userOrderCount > 0)
+                            <a class="nav-link" href="/orders">
+                                Orders
+                            </a>
+                        @endif
+                    @endauth
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
                 
                 @else
