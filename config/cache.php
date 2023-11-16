@@ -74,11 +74,18 @@ return [
             ],
         ],
 
+        // 'redis' => [
+        //     'driver' => 'redis',
+        //     'connection' => 'cache',
+        //     'lock_connection' => 'default',
+        // ],
         'redis' => [
             'driver' => 'redis',
-            'connection' => 'cache',
-            'lock_connection' => 'default',
+            'connection' => 'default',
+            'queue' => 'default',
+            'retry_after' => 90,
         ],
+        
 
         'dynamodb' => [
             'driver' => 'dynamodb',

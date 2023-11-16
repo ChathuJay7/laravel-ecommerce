@@ -8,7 +8,7 @@
 
     <div class="row mb-4">
         <div class="col-md-6 offset-md-3">
-            <form action="/home" method="GET" class="d-flex">
+            <form action="/home/search" method="GET" class="d-flex">
                 <input type="text" name="searchTerm" class="form-control" placeholder="Search products...">
                 <button type="submit" class="btn btn-primary ms-2">Search</button>
             </form>

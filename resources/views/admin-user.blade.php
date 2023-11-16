@@ -8,7 +8,7 @@
     <div class="d-flex justify-content-between align-items-center gap-5">
         <a href="/admin-dashboard" class="btn btn-secondary"> <- Dashboard </a>
 
-        <form action="/admin-user" method="GET" class="d-flex flex-grow-1 ms-2">
+        <form action="/admin-user/search" method="GET" class="d-flex flex-grow-1 ms-2">
             <input type="text" name="searchTerm" class="form-control" placeholder="Search products...">
             <button type="submit" class="btn btn-primary ms-2 flex-grow-1">Search</button> 
         </form>

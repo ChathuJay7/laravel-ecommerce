@@ -11,6 +11,12 @@
                 <a href="/admin-product" class="text-decoration-none"> &lt;-- Products </a>
             </div>
 
+            @if(session('success'))
+                <div class="container alert alert-success text-center">
+                    {{ session('success') }}
+                </div>
+            @endif
+
             @if(isset($error))
                 <div>
                     {{ $error }}

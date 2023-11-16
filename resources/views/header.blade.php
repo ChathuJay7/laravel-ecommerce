@@ -50,6 +50,15 @@
                     @endauth
                 </li>
 
+                @if (auth()->user()->role === 'admin')
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin-product">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin-user">Users</a>
+                    </li>
+                @endif
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         Logout

@@ -22,9 +22,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::view('/login', 'login');
-// Route::view('/register', 'register');
-//Route::view('/home', 'home');
 
 
 Route::get('/login', [AuthController::class, 'loginPage'])->name('login');
@@ -37,10 +34,10 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 Route::middleware(['web', 'auth', 'user'])->group(function () {
+    
     Route::get('/home', [ProductController::class, 'index']);
-
-    Route::get('/home', [ProductController::class, 'search']);
-
+    Route::get('/home/search', [ProductController::class, 'search']);
+    
     Route::get('/product/{id}', [ProductController::class, 'singleProductView']);
 
     Route::get('/add-to-cart/{productId}', [CartController::class, 'addToCart']);
@@ -65,12 +62,12 @@ Route::middleware(['web', 'auth', 'admin'])->group(function () {
     Route::get('/admin-dashboard', [ProductController::class, 'index']);
 
     Route::get('/admin-product', [ProductController::class, 'adminProductView']);
-    Route::get('/admin-product', [ProductController::class, 'search']);
+    Route::get('/admin-product/search', [ProductController::class, 'search']);
     Route::get('/add-new-product', [ProductController::class, 'addNewProductView']);
     Route::post('/add-new-product', [ProductController::class, 'addNewProduct']);
 
     Route::get('/admin-user', [UserController::class, 'adminUserView']);
-    Route::get('/admin-user', [UserController::class, 'search']);
+    Route::get('/admin-user/search', [UserController::class, 'search']);
     Route::get('/add-new-user', [UserController::class, 'addNewUserView']);
     Route::post('/add-new-user', [UserController::class, 'addNewUser']);
 
@@ -84,39 +81,5 @@ Route::middleware(['web', 'auth', 'admin'])->group(function () {
 
     Route::get('/admin-single-user/{id}', [UserController::class, 'userDetails']);
 });
-
-
-
-// Route::middleware(['auth'])->group(function () {
-//     Route::get('/home', function () {
-//         return view('/home');
-//     });
-// });
-
-// Route::group(['middleware' => ['auth', 'user'], 'prefix' => 'user'], function () {
-//     Route::get('/home', function () {
-//         return view('/home');
-//     });
-//     //Route::get('/list', 'UserController@list')->name('user_list');
-// });
-
-// Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'user'], function () {
-//     Route::get('/admin', function () {
-//         return view('/admin-dashboard');
-//     });
-//     //Route::get('/list', 'UserController@list')->name('user_list');
-// });
-
-// Route::middleware(['auth', 'role:user'])->group(function () {
-//     Route::get('/home', function () {
-//         return view('home');
-//     })->name('home');
-// });
-
-// Route::middleware(['auth', 'role:admin'])->group(function () {
-//     Route::get('/admin-dashboard', function () {
-//         return view('admin-dashboard');
-//     })->name('admin-dashboard');
-// });
 
 
